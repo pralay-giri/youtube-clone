@@ -5,3 +5,6 @@ export const DEFAULT_PROFILE_CDN =
 export const YOUTUBE_VIDEO_API =
     "https://youtube.googleapis.com/youtube/v3/videos?maxResults=50&part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&regionCode=IN&key=" +
     VITE_GOOGLE_API_KEY;
+
+export const DEFAULT_PROFILE_URL =
+    "https://static.vecteezy.com/system/resources/thumbnails/010/260/479/small/default-avatar-profile-icon-of-social-media-user-in-clipart-style-vector.jpg";

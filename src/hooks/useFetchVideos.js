@@ -9,7 +9,6 @@ const useFetchVideos = () => {
         try {
             const responce = await fetch(YOUTUBE_VIDEO_API);
             const data = await responce.json();
-            console.log(data);
             disptach(setVideo(data));
         } catch (error) {
             console.log(error);
