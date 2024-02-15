@@ -11,6 +11,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { IoFlagOutline } from "react-icons/io5";
 import { IoIosHelpCircleOutline } from "react-icons/io";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const youSection = [
     { tag: "Your Channel", icon: <CgProfile /> },
@@ -42,18 +43,23 @@ const otherSection = [
 ];
 
 const Sidebar = () => {
+    const navigator = useNavigate();
     const isSideNavBarVisible = useSelector(
         (state) => state.appSlice.isSideNavBarVisible
     );
 
+    const handleHomeBtn = () => {
+        navigator("/");
+    };
+
     return (
         <div
-            className={`relative w-2/12 h-screen overflow-hidden transition-all ${
-                !isSideNavBarVisible && "w-1/12"
+            className={`relative h-screen overflow-hidden transition-all ${
+                !isSideNavBarVisible ? "w-1/12" : "w-2/12"
             }`}
         >
             <div
-                className={`*:mb-5 *:mt-2 text-gray-500 h-screen border px-2 py-5 *:px-2 overflow-y-auto *:border-b ${
+                className={`*:mb-5 *:mt-2 text-gray-500 h-screen px-2 py-5 *:px-2 overflow-y-auto *:border-b ${
                     !isSideNavBarVisible && "*:border-none"
                 }`}
             >
@@ -63,7 +69,10 @@ const Sidebar = () => {
                             !isSideNavBarVisible && "*:text-xl *:flex-col *:p-3"
                         }`}
                     >
-                        <li className="hover:bg-gray-200 hover:text-gray-800 text-lg transition-all">
+                        <li
+                            className="hover:bg-gray-200 hover:text-gray-800 text-lg transition-all"
+                            onClick={handleHomeBtn}
+                        >
                             <IoMdHome className="text-gray-800" />
                             <p
                                 className={

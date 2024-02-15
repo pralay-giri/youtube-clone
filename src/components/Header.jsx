@@ -6,6 +6,7 @@ import { MdOutlineNotifications } from "react-icons/md";
 import { IoVideocamOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { closeSideNavBar, openSideNavBar } from "../store/slices/appSlice";
+import { Link } from "react-router-dom";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -29,7 +30,10 @@ const Header = () => {
                 className="w-8 text-2xl font-bold cursor-pointer mx-4"
                 onClick={handleHamBarClick}
             />
-            <div className="flex gap-1 items-center *:cursor-pointer">
+            <div
+                className="flex gap-1 items-center *:cursor-pointer"
+                onClick={alert}
+            >
                 <div className="w-8">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"

@@ -74,7 +74,7 @@ const FilterBtns = () => {
     };
 
     return (
-        <div className="relative overflow-x-hidden w-12/12 px-5 py-4 after:content-[''] after:absolute after:top-0 after:left-0 after:h-full after:w-10 after:bg-gradient-to-r after:from-white before:content-[''] before:absolute before:top-0 before:right-0 before:h-full before:w-10 before:bg-gradient-to-l before:from-white before:z-10">
+        <div className="relative overflow-x-hidden w-12/12 px-5 py-4 ">
             <div className="relative px-2 py-3 flex flex-row overflow-x-scroll no-scroll-bar">
                 {buttons.map((btn) => (
                     <button

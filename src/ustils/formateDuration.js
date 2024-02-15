@@ -1,5 +1,4 @@
 export const formatDuration = (duration) => {
-    console.log(duration);
     if (!duration) return;
     const match = duration.match(/PT(\d+H)?(\d+M)?(\d+S)?/);
 

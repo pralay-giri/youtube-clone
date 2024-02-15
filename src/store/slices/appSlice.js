@@ -5,6 +5,9 @@ const appSlice = createSlice({
     initialState: {
         isSideNavBarVisible: true,
         videos: null,
+        clickedVideo: null,
+        relatedVideos: null,
+        comments: null,
     },
     reducers: {
         openSideNavBar: (state) => {
@@ -16,8 +19,26 @@ const appSlice = createSlice({
         setVideo: (state, action) => {
             state.videos = action.payload;
         },
+
+        setClickedVideo: (state, action) => {
+            state.clickedVideo = action.payload;
+        },
+
+        setReletedVideos: (state, action) => {
+            state.relatedVideos = action.payload;
+        },
+        setComments: (state, action) => {
+            state.comments = action.payload;
+        },
     },
 });
 
-export const { openSideNavBar, closeSideNavBar, setVideo } = appSlice.actions;
+export const {
+    openSideNavBar,
+    closeSideNavBar,
+    setVideo,
+    setClickedVideo,
+    setReletedVideos,
+    setComments,
+} = appSlice.actions;
 export default appSlice.reducer;
