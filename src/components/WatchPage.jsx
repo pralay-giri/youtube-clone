@@ -8,6 +8,7 @@ import { DEFAULT_PROFILE_CDN } from "../ustils/constant";
 import { viewConveter } from "../ustils/formatViewCount";
 import Description from "./Description";
 import CommentArea from "./CommentArea";
+import HorizontalVideoCard from "./HorizontalVideoCard";
 
 const WatchPage = () => {
     const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const WatchPage = () => {
 
     return (
         <div className="w-full p-5 flex gap-5">
-            <div className="w-9/12 ">
+            <div className="w-8/12 ">
                 <div className="w-12/12 aspect-video">
                     <iframe
                         className="aspect-video w-full"
@@ -100,14 +101,14 @@ const WatchPage = () => {
                     commentData={commentData}
                 />
             </div>
-            <div>
+            <div className="w-4/12">
                 {relatedVideos?.items?.map((video) => {
                     if (video.id === clickedVideo?.items?.[0]?.id) {
                         return;
                     }
                     return (
                         <Link to={`/watch?v=${video.id}`} key={video.id}>
-                            <VideoCard videoInfo={video} />
+                            <HorizontalVideoCard videoInfo={video} />
                         </Link>
                     );
                 })}

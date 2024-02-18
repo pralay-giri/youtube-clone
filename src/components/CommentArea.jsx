@@ -12,10 +12,11 @@ import useFetchComments from "../hooks/useFetchComments";
 const CommentArea = ({ totalCommentCount, commentData }) => {
     const [searchParams] = useSearchParams();
     const id = searchParams.get("v");
-    const dispatch = useDispatch();
     const [isToolTipVisible, setIsToolTipVisible] = useState(false);
     const [isSortBtnVisible, setIsSortBtnVisible] = useState(false);
     const [emojiPickerVisible, setEmojiPickerVisible] = useState(false);
+    const [isCommentHandlerVisible, setIsCommentHandlerVisible] =
+        useState(false);
     const [sortType, setSortType] = useState("&order=time");
     const [commentValue, setCommentValue] = useState("");
 
@@ -46,6 +47,12 @@ const CommentArea = ({ totalCommentCount, commentData }) => {
     };
     const handleSortNewestComments = () => {
         setSortType((prev) => "&order=time");
+    };
+
+    const handleCancleBtnClick = () => {
+        setCommentValue("");
+        setEmojiPickerVisible(false);
+        setIsCommentHandlerVisible(false);
     };
 
     return (
@@ -91,17 +98,22 @@ const CommentArea = ({ totalCommentCount, commentData }) => {
                 <div className="w-14 aspect-square">
                     <img src={DEFAULT_PROFILE_URL} alt="profile" />
                 </div>
-                <div className="w-full px-2 py-1 group">
+                <div className="w-full px-2 py-1">
                     <div className="my-2  w-full relative">
                         <input
                             type="text"
                             placeholder="add comments..."
                             value={commentValue}
                             onChange={handleInputField}
+                            onFocus={() => setIsCommentHandlerVisible(true)}
                             className="text-lg border-b-2 border-b-gray-500 w-full outline-none transition-colors focus-visible:border-b-2 focus-visible:border-black"
                         />
                     </div>
-                    <div className="items-center px-2 hidden transition-all group-focus-within:flex group-focus-within:visible">
+                    <div
+                        className={`${
+                            isCommentHandlerVisible ? "flex" : "hidden"
+                        } items-center px-2 transition-all`}
+                    >
                         <GrEmoji
                             className="mr-auto text-2xl font-semibold cursor-pointer text-gray-800 hover:bg-gray-300 rounded-full"
                             onClick={() =>
@@ -109,7 +121,10 @@ const CommentArea = ({ totalCommentCount, commentData }) => {
                             }
                         />
                         <div className="*:rounded-full *:px-3 *:py-2 *:mx-1">
-                            <button className=" hover:bg-gray-200">
+                            <button
+                                className=" hover:bg-gray-200"
+                                onClick={handleCancleBtnClick}
+                            >
                                 Cancel
                             </button>
                             <button

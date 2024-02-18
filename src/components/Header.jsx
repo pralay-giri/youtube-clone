@@ -6,7 +6,6 @@ import { MdOutlineNotifications } from "react-icons/md";
 import { IoVideocamOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { closeSideNavBar, openSideNavBar } from "../store/slices/appSlice";
-import { Link } from "react-router-dom";
 
 const Header = () => {
     const dispatch = useDispatch();
@@ -14,7 +13,7 @@ const Header = () => {
         (state) => state.appSlice.isSideNavBarVisible
     );
     const [searchInput, setSearchInput] = useState("");
-    const handleSearch = (e) => {
+    const handleSearchInput = (e) => {
         setSearchInput(e.target.value);
     };
 
@@ -24,16 +23,15 @@ const Header = () => {
             : dispatch(openSideNavBar());
     };
 
+    const handleSearch = async () => {};
+
     return (
         <div className="flex items-center w-screen shadow-lg px-1 py-2">
             <RxHamburgerMenu
                 className="w-8 text-2xl font-bold cursor-pointer mx-4"
                 onClick={handleHamBarClick}
             />
-            <div
-                className="flex gap-1 items-center *:cursor-pointer"
-                onClick={alert}
-            >
+            <div className="flex gap-1 items-center *:cursor-pointer">
                 <div className="w-8">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -57,9 +55,12 @@ const Header = () => {
                     placeholder="search"
                     className=" border border-gray-500 rounded-l-full w-10/12 pl-5 p-2 outline-1 focus-visible:outline-none focus-visible:border focus-visible:border-blue-900 text-gray-700 items-center"
                     value={searchInput}
-                    onChange={handleSearch}
+                    onChange={handleSearchInput}
                 />
-                <div className="text-2xl font-bold border border-gray-500 px-3 py-2 bg-gray-200 text-gray-600 rounded-r-full *:cursor-pointer">
+                <div
+                    className="text-2xl font-bold border border-gray-500 px-3 py-2 bg-gray-200 text-gray-600 rounded-r-full *:cursor-pointer"
+                    onClick={handleSearch}
+                >
                     <IoSearch />
                 </div>
             </div>

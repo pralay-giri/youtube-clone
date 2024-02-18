@@ -5,6 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import WatchPage from "./WatchPage";
 import ErrorPage from "./ErrorPage";
 import MainContainer from "./MainContainer";
+import ResultPage from "./ResultPage";
 
 function App() {
     const router = createBrowserRouter([
@@ -21,8 +22,12 @@ function App() {
                     element: <WatchPage />,
                 },
                 {
+                    path: "/result",
+                    element: <ResultPage />,
+                },
+                {
                     path: "/channel",
-                    element: <ErrorPage />,
+                    element: <p>channel</p>,
                 },
             ],
             errorElement: <ErrorPage />,
