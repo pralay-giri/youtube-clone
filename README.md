@@ -70,3 +70,5 @@
 -   adding sorting feature (for sorting data will come from server)
 -   creating a search Slice
 -   adding search functionality
+
+   **NOTE :** you need to have your youtube data api key to use the youtube api to fetch data. you can visit [google api referance](https://console.cloud.google.com/apis/library) 
