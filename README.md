@@ -1,3 +1,32 @@
+# Youtube UI clone using React.js
+
+## [visit website](https://youtube-clone-nine-blue.vercel.app/)
+
+## installation process
+
+1. clone the repo
+
+    ```sh
+    $ git clone https://github.com/pralay-giri/youtube-clone.git
+    ```
+
+2. go to the repo
+    ```sh
+    $ cd youtube-clone
+    ```
+3. install all the dependencies
+    ```
+    npm i
+    ```
+    ### or
+    ```sh
+    npm install
+    ```
+4. run your code in dev mode
+    ```sh
+    npm run dev
+    ```
+
 ## App Layout
 
 -   App
