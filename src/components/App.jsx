@@ -11,7 +11,12 @@ function App() {
     const router = createBrowserRouter([
         {
             path: "/",
-            element: <Body />,
+            element: (
+                <React.Fragment>
+                    <Header />
+                    <Body />
+                </React.Fragment>
+            ),
             children: [
                 {
                     path: "/",
@@ -36,7 +41,6 @@ function App() {
 
     return (
         <div className="overflow-x-hidden">
-            <Header />
             <RouterProvider router={router} />
         </div>
     );

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import useSearchVideoInfo from "../hooks/useSearchVideoInfo";
 import { useSelector, useDispatch } from "react-redux";
@@ -12,12 +12,10 @@ import HorizontalVideoCard from "./HorizontalVideoCard";
 
 const WatchPage = () => {
     const dispatch = useDispatch();
-    dispatch(closeSideNavBar());
     const [isLiked, setIsLiked] = useState(false);
     const [isSubScribed, setIsSubScribed] = useState(false);
     const commentData = useSelector((state) => state.appSlice.comments);
 
-    // subscribing the slices
     const clickedVideo = useSelector((state) => state.appSlice.clickedVideo);
     const relatedVideos = useSelector((state) => state.appSlice.relatedVideos);
 
@@ -35,6 +33,10 @@ const WatchPage = () => {
     const handleSubscribeClick = () => {
         setIsSubScribed((prev) => !prev);
     };
+
+    useEffect(() => {
+        dispatch(closeSideNavBar());
+    }, []);
 
     return (
         <div className="w-full p-5 flex gap-5">

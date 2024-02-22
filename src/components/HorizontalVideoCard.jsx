@@ -9,11 +9,11 @@ const HorizontalVideoCard = ({ videoInfo }) => {
     const views = viewConveter(videoInfo?.statistics?.viewCount);
     return (
         <div className="w-full rounded-lg hover:rounded-none group overflow-hidden transition-all mb-5 flex gap-3">
-            <div className="container relative rounded-lg group-hover:rounded-none transition-all overflow-hidden w-7/12 aspect-video">
+            <div className="container relative rounded-lg group-hover:rounded-none transition-all overflow-hidden w-6/12 aspect-video">
                 <img
-                    className="object-cover aspect-video"
+                    className="w-full object-cover object-center aspect-video"
                     loading="lazy"
-                    src={videoInfo?.snippet?.thumbnails?.standard?.url}
+                    src={videoInfo?.snippet?.thumbnails?.high?.url}
                     alt={videoInfo?.snippet?.channelTitle}
                 />
                 <div className="absolute bottom-0 right-0 bg-black text-white rounded-bl-lg py-1 px-2 text-xs">

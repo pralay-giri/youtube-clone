@@ -6,9 +6,11 @@ import { MdOutlineNotifications } from "react-icons/md";
 import { IoVideocamOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
 import { closeSideNavBar, openSideNavBar } from "../store/slices/appSlice";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
     const dispatch = useDispatch();
+    const navigator = useNavigate();
     const isSideNavBarVisible = useSelector(
         (state) => state.appSlice.isSideNavBarVisible
     );
@@ -23,7 +25,17 @@ const Header = () => {
             : dispatch(openSideNavBar());
     };
 
-    const handleSearch = async () => {};
+    const handleSearch = async () => {
+        if (!searchInput.trim().length) return;
+        setSearchInput("");
+        navigator("/result?search_query=".concat(searchInput));
+    };
+
+    const handleKeyDown = (e) => {
+        if (e.key === "Enter") {
+            handleSearch();
+        }
+    };
 
     return (
         <div className="flex items-center w-screen shadow-lg px-1 py-2">
@@ -31,7 +43,10 @@ const Header = () => {
                 className="w-8 text-2xl font-bold cursor-pointer mx-4"
                 onClick={handleHamBarClick}
             />
-            <div className="flex gap-1 items-center *:cursor-pointer">
+            <div
+                className="flex gap-1 items-center *:cursor-pointer"
+                onClick={() => navigator("/")}
+            >
                 <div className="w-8">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -49,20 +64,21 @@ const Header = () => {
                 </div>
                 <p className="text-2xl text-gray-700 font-bold">YouTube</p>
             </div>
-            <div className="flex items-center w-5/12 mx-auto">
+            <div className="flex items-center w-5/12 mx-auto focus-within:shadow-lg rounded-full">
                 <input
                     type="text"
                     placeholder="search"
-                    className=" border border-gray-500 rounded-l-full w-10/12 pl-5 p-2 outline-1 focus-visible:outline-none focus-visible:border focus-visible:border-blue-900 text-gray-700 items-center"
+                    className=" border border-gray-500 rounded-l-full w-11/12 pl-5 p-2 outline-1 focus-visible:outline-none focus-visible:border focus-visible:border-blue-900 text-gray-700 items-center focus-visible:shadow-lg"
                     value={searchInput}
                     onChange={handleSearchInput}
+                    onKeyDown={handleKeyDown}
                 />
-                <div
-                    className="text-2xl font-bold border border-gray-500 px-3 py-2 bg-gray-200 text-gray-600 rounded-r-full *:cursor-pointer"
+                <button
+                    className="w-1/12 text-2xl font-bold border border-gray-500 px-3 py-2 bg-gray-200 text-gray-600 rounded-r-full *:cursor-pointer"
                     onClick={handleSearch}
                 >
                     <IoSearch />
-                </div>
+                </button>
             </div>
             <div className=" w-2/12 flex text-3xl text-gray-600 *:cursor-pointer items-center justify-evenly">
                 <IoVideocamOutline className="hover:text-gray-800" />

@@ -39,3 +39,5 @@
 -   fixing some bugs
 -   fetching comments and rendering the comment component
 -   adding sorting feature (for sorting data will come from server)
+-   creating a search Slice
+-   adding search functionality

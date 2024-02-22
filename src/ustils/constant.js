@@ -11,5 +11,5 @@ export const DEFAULT_PROFILE_URL =
 
 export const VIDEO_DETAILS_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=${VITE_GOOGLE_API_KEY}&id=`;
 
-export const YOUTUBE_SEARCH_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&key=${VITE_GOOGLE_API_KEY}&q=`;
+export const YOUTUBE_SEARCH_API = `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=50&key=${VITE_GOOGLE_API_KEY}&q=`;
 export const COMMENT_API = `https://youtube.googleapis.com/youtube/v3/commentThreads?part=snippet%2Creplies&maxResults=100&key=${VITE_GOOGLE_API_KEY}&videoId=`;
